@@ -56,19 +56,21 @@ def post_detail(request, id):
     template = 'blog/detail.html'
     post = next((post_dict for post_dict in posts
                  if post_dict['id'] == id), None)
-    context = {'post': post}
     if post is None:
         raise Http404
-    else:
-        return render(request, template, context)
+    context = {'post': post}
+    return render(request, template, context)
 
 
 def category_posts(request, category_slug):
     template = 'blog/category.html'
-    post = next((post_dict for post_dict in posts
-                 if post_dict['category'] == category_slug), None)
+    for post in posts:
+        post['category'] = category_slug
+    #post = next((post_dict['category'] == category_slug for post_dict in posts
+     #
+    #            ), None)
     context = {'post': post}
-    if post is None:
-        raise Http404
-    else:
-        return render(request, template, context)
+    #if post is None:
+    #    raise Http404
+    #else:
+    return render(request, template, context)
