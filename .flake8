@@ -7,11 +7,14 @@ ignore =
     D100, D101, D102, D103, D104, D105, D106, D107,
     D203, D205, D213,
     D400, D401,
+    E501,
     N806, N818
 exclude =
-    tests/
-    */migrations/
-    venv/
+    tests/,
+    */migrations/,
+    venv/,
+    myenv/,
+    Lib,
     env/
 per-file-ignores =
   settings.py:E501
