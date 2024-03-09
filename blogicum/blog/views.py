@@ -53,7 +53,7 @@ def index(request):
 
 def post_detail(request, id):
     template = 'blog/detail.html'
-    post = next((post_dict for post_dict in posts 
+    post = next((post_dict for post_dict in posts
                  if post_dict['id'] == id), None)
     context = {'post': post}
     if post is None:
@@ -64,7 +64,7 @@ def post_detail(request, id):
 
 def category_posts(request, category_slug):
     template = 'blog/category.html'
-    post = next((post_dict for post_dict in posts 
+    post = next((post_dict for post_dict in posts
                  if post_dict['category'] == category_slug), None)
     context = {'post': post}
     if post is None:
