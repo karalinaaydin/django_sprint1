@@ -59,7 +59,7 @@ def post_detail(request, id):
         if post['id'] == id:
             context = {'post': post}
     if not context:
-        raise Http404    
+        raise Http404
     return render(request, template, context)
 
 
