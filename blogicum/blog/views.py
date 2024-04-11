@@ -1,9 +1,8 @@
-from django.shortcuts import render  # type: ignore[import-untyped]
-from django.http import HttpResponseNotFound  # type: ignore[import-untyped]
-from django.http import HttpResponse  # type: ignore[import-untyped]
+from django.shortcuts import render
+from django.http import HttpResponseNotFound
+from django.http import HttpResponse
 
-# Временная заглушка для базы данных.
-posts: list[dict] = [
+posts = [
     {
         'id': 0,
         'location': 'Остров отчаянья',
@@ -49,15 +48,15 @@ posts: list[dict] = [
 
 def index(request) -> HttpResponse:
     """Главная страница."""
-    template: str = 'blog/index.html'
-    context: dict = {'posts': posts[::-1]}
+    template = 'blog/index.html'
+    context = {'posts': posts[::-1]}
     return render(request, template, context)
 
 
 def post_detail(request, id) -> HttpResponse:
     """Отдельный пост."""
-    template: str = 'blog/detail.html'
-    context: dict = {}
+    template = 'blog/detail.html'
+    context = {}
     for post in posts:
         if post['id'] == id:
             context = {'post': post}
@@ -69,7 +68,5 @@ def post_detail(request, id) -> HttpResponse:
 def category_posts(request, category_slug) -> HttpResponse:
     """Категория постов."""
     template = 'blog/category.html'
-    for post in posts:
-        post['category'] = category_slug
-    context = {'post': post}
+    context = {'category': category_slug}
     return render(request, template, context)
