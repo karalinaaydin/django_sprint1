@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseNotFound
-from django.http import HttpResponse
+from django.http import HttpResponseNotFound, HttpResponse
 
 posts = [
     {
